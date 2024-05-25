@@ -4,12 +4,12 @@ import requests
 import os
 def notify_send(msg):
     url = 'https://notify-api.line.me/api/notify'
-    token = 'fj6Z98A7ooSaffX7rWYLTIJiocT6dVd9pobcB0AKZdv'
+    token = (os.getenv('LINE_NOTIFY_TOKEN'))
     headers = {
         'Authorization': 'Bearer ' + token  # 設定權杖
     }
     data = {
-        'message': (os.getenv('LINE_NOTIFY_TOKEN'))  # 設定要發送的訊息
+        'message': msg  # 設定要發送的訊息
     }
     response = requests.post(url, headers=headers, data=data)
     if response.status_code != 200:
